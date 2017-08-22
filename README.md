@@ -25,3 +25,11 @@ If you are using other ES2015 features, make sure to use a transpiler such as Ba
 ## Configuration File
 `webpack.config.js`
 Allows you to specify the entry point and how the output will be resolved in terms of filename and filepath via an exported module.
+Now the project can be built using
+
+`./node_modules/.bin/webpack --config webpack.config.js`
+
+as opposed to 
+
+`./node_modules/.bin/webpack src/index.js dist/bundle.js`
+
