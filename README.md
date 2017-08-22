@@ -66,4 +66,7 @@ The following stackoverflow was very helpful!
 
 https://stackoverflow.com/questions/37671342/how-to-load-image-files-with-webpack-file-loader
 
+## Loading Data
+nother useful asset that can be loaded is data, like JSON files, CSVs, TSVs, and XML. Support for JSON is actually built-in, similar to NodeJS, meaning `import Data from './data.json'` will work by default. To import CSVs, TSVs, and XML you could use the csv-loader and xml-loader. Let's handle loading all three:
 
+`npm install --save-dev csv-loader xml-loader`
