@@ -78,4 +78,9 @@ This can be especially helpful when implementing some sort of data visualization
 # Branch Asset Management in Webpack 
 The branch Asset Management in Webpack was created right after going through the Webpack documentation for Asset Management. The **Wrapping Up** section recommended to delete some of the configurations in the index.js and the webpack config file. Also, had to delete project files.
 
+# Output Management
+So far we've manually included all our assets in our index.html file, but as your application grows and once you start using hashes in filenames and outputting multiple bundles, it will be difficult to keep managing your index.html file manually. However, there's no need to fear as a few plugins exist that will make this process much easier to manage.
+
+We can see that webpack generates our print.bundle.js and app.bundle.js files, which we also specified in our index.html file. if you open index.html in your browser, you can see what happens when you click the button.
+
 
