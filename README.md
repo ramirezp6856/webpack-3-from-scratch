@@ -19,7 +19,7 @@ If you inspect dist/bundle.js, you might be able to see how webpack does this,
 it's quite ingenious! Besides import and export, webpack supports various other module syntaxes as well, 
 see Module API for more information.
 
-Note that webpack will not alter any code other than import and export statements. 
+**Note** webpack will not alter any code other than import and export statements. 
 If you are using other ES2015 features, make sure to use a transpiler such as Babel or Bublé via webpack's loader system.
 
 ## Configuration File
@@ -33,3 +33,4 @@ as opposed to
 
 `./node_modules/.bin/webpack src/index.js dist/bundle.js`
 
+**Note** If a webpack.config.js is present, the webpack command picks it up by default. We use the --config option here only to show that you can pass a config of any name. This will come in useful for more complex configurations that need to be split into multiple files.
