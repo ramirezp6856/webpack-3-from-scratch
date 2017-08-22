@@ -99,3 +99,16 @@ You might be wondering how webpack and its plugins seem to "know" what files are
 
 The manifest data can be extracted into a json file for easy consumption using the WebpackManifestPlugin.
 
+# Development
+Let's look into setting up a development environment to make our lives a little easier.
+
+## Using Source Maps
+When webpack bundles your source code, it can become difficult to track down errors and warnings to their original location. For example, if you bundle three source files (a.js, b.js, and c.js) into one bundle (bundle.js) and one of the source files contains an error, the stack trace will simply point to bundle.js. This isn't always helpful as you probably want to know exactly which source file the error came from.
+
+In order to make it easier to track down errors and warnings, JavaScript offers source maps, which maps your compiled code back to your original source code. If an error originates from b.js, the source map will tell you exactly that.
+
+There are a lot of different options available when it comes to source maps, be sure to check them out so you can configure them to your needs.
+
+## Using Watch Mode
+You can instruct webpack to "watch" all files within your dependency graph for changes. If one of these files is updated, the code will be recompiled so you don't have to run the full build manually.
+
