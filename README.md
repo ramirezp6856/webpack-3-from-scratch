@@ -7,6 +7,7 @@
 Notice, "source" code (/src) is separated from the "distribution" code (/dist). 
 * "source" code - written and edited 
 * "distribution" code - minimized and optimized output of our build process that will eventually be loaded in the browser
+
 `./node_modules/.bin/webpack src/index.js dist/bundle.js`
 
 ## Modules per Webpack documentation
