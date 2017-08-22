@@ -63,6 +63,7 @@ Using the `file-loader` we can easily incorporate images.
 `npm install --save-dev file-loader`
 
 The following stackoverflow was very helpful!
+
 https://stackoverflow.com/questions/37671342/how-to-load-image-files-with-webpack-file-loader
 
 
