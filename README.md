@@ -35,5 +35,10 @@ as opposed to
 
 **Note** If a webpack.config.js is present, the webpack command picks it up by default. We use the --config option here only to show that you can pass a config of any name. This will come in useful for more complex configurations that need to be split into multiple files.
 
-A configuration file allows far more flexibility than simple CLI usage. We can specify loader rules, plugins, resolve options and many other enhancements this way. 
+A configuration file allows far more flexibility than simple CLI usage. We can specify loader rules, plugins, resolve options and many other enhancements this way. For more info read: https://webpack.js.org/configuration/
+
+## NPM Scripts
+`Package.json` was updated by adding an npm script to handle building webpack.
+
+Now the `npm run build` command can be used in place of the longer commands used earlier.
 
