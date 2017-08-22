@@ -34,3 +34,6 @@ as opposed to
 `./node_modules/.bin/webpack src/index.js dist/bundle.js`
 
 **Note** If a webpack.config.js is present, the webpack command picks it up by default. We use the --config option here only to show that you can pass a config of any name. This will come in useful for more complex configurations that need to be split into multiple files.
+
+A configuration file allows far more flexibility than simple CLI usage. We can specify loader rules, plugins, resolve options and many other enhancements this way. 
+
