@@ -70,3 +70,7 @@ https://stackoverflow.com/questions/37671342/how-to-load-image-files-with-webpac
 nother useful asset that can be loaded is data, like JSON files, CSVs, TSVs, and XML. Support for JSON is actually built-in, similar to NodeJS, meaning `import Data from './data.json'` will work by default. To import CSVs, TSVs, and XML you could use the csv-loader and xml-loader. Let's handle loading all three:
 
 `npm install --save-dev csv-loader xml-loader`
+
+When you open index.html and look at your console in your developer tools, you should be able to see your imported data being logged to the console!
+
+This can be especially helpful when implementing some sort of data visualization using a tool like d3. Instead of making an ajax request and parsing the data at runtime you can load it into your module during the build process so that the parsed data is ready to go as soon as the module hits the browser.
