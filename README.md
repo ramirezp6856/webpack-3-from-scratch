@@ -21,3 +21,7 @@ see Module API for more information.
 
 Note that webpack will not alter any code other than import and export statements. 
 If you are using other ES2015 features, make sure to use a transpiler such as Babel or Bublé via webpack's loader system.
+
+## Configuration File
+`webpack.config.js`
+Allows you to specify the entry point and how the output will be resolved in terms of filename and filepath via an exported module.
