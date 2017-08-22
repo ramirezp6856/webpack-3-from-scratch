@@ -1,6 +1,6 @@
 # webpack-3-from-scratch
 
-## Getting Started
+# Getting Started
 `npm install`
 
 ## Creating a Bundle
@@ -42,3 +42,11 @@ A configuration file allows far more flexibility than simple CLI usage. We can s
 
 Now the `npm run build` command can be used in place of the longer commands used earlier.
 
+# Asset Management
+Webpack asset management can allow projects to incorporate assets, like images.
+
+Prior to webpack, front-end developers would use tools like grunt and gulp to process these assets and move them from their `/src` folder into their `/dist` or `/build` directory. The same idea was used for JavaScript modules, but tools like webpack will dynamically bundle all dependencies (creating what's known as a dependency graph). This is great because every module now explicitly states its dependencies and we'll avoid bundling modules that aren't in use.
+
+One of the coolest webpack features is that you can also include any other type of file, besides JavaScript, for which there is a loader. This means that the same benefits listed above for JavaScript (e.g. explicit dependencies) can be applied to everything used in building a website or web app. Let's start with CSS, as you may already be familiar with that setup.
+
+## Setup
