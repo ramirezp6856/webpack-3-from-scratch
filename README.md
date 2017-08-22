@@ -81,6 +81,9 @@ The branch Asset Management in Webpack was created right after going through the
 # Output Management
 So far we've manually included all our assets in our index.html file, but as your application grows and once you start using hashes in filenames and outputting multiple bundles, it will be difficult to keep managing your index.html file manually. However, there's no need to fear as a few plugins exist that will make this process much easier to manage.
 
-We can see that webpack generates our print.bundle.js and app.bundle.js files, which we also specified in our index.html file. if you open index.html in your browser, you can see what happens when you click the button.
+We can see that webpack generates our `print.bundle.js` and `app.bundle.js` files, which we also specified in our `index.html` file. if you open `index.html` in your browser, you can see what happens when you click the button.
 
+## Setting up HtmlWebpackPlugin
+`npm install --save-dev html-webpack-plugin`
 
+`HtmlWebpackPlugin` by default will generate its own `index.html` file, even though we already have one in the `dist/` folder. This means that it will replace our `index.html` file with a newly generated one.
