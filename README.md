@@ -87,3 +87,15 @@ We can see that webpack generates our `print.bundle.js` and `app.bundle.js` file
 `npm install --save-dev html-webpack-plugin`
 
 `HtmlWebpackPlugin` by default will generate its own `index.html` file, even though we already have one in the `dist/` folder. This means that it will replace our `index.html` file with a newly generated one.
+
+## Cleaning up the `/dist` folder
+Webpack will generate the files and put them in the /dist folder for you, but it doesn't keep track of which files are actually in use by your project.
+
+In general it's good practice to clean the /dist folder before each build, so that only used files will be generated. A popular plugin to manage this is the `clean-webpack-plugin`.
+`npm install clean-webpack-plugin --save-dev`
+
+## Manifest
+You might be wondering how webpack and its plugins seem to "know" what files are being generated. The answer is in the manifest that webpack keeps to track how all the modules map to the output bundles. If you're interested in managing webpack's output in other ways, the manifest would be a good place to start.
+
+The manifest data can be extracted into a json file for easy consumption using the WebpackManifestPlugin.
+
