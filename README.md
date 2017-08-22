@@ -49,4 +49,11 @@ Prior to webpack, front-end developers would use tools like grunt and gulp to pr
 
 One of the coolest webpack features is that you can also include any other type of file, besides JavaScript, for which there is a loader. This means that the same benefits listed above for JavaScript (e.g. explicit dependencies) can be applied to everything used in building a website or web app. Let's start with CSS, as you may already be familiar with that setup.
 
-## Setup
+## Loading CSS
+In order to import a CSS file from within a JavaScript module, you need to install and add the style-loader and css-loader to your module configuration:
+`npm install --save-dev style-loader css-loader`
+These are then added to the package.json file. So, `npm install` will include them.
+
+`webpack.config.js` 
+
+**Note** webpack uses a regular expression to determine which files it should look for and serve to a specific loader. In this case any file that ends with .css will be served to the style-loader and the css-loader.
