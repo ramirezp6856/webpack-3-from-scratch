@@ -57,3 +57,12 @@ These are then added to the package.json file. So, `npm install` will include th
 `webpack.config.js` 
 
 **Note** webpack uses a regular expression to determine which files it should look for and serve to a specific loader. In this case any file that ends with .css will be served to the style-loader and the css-loader.
+
+## Loading Images
+Using the `file-loader` we can easily incorporate images.
+`npm install --save-dev file-loader`
+
+The following stackoverflow was very helpful!
+https://stackoverflow.com/questions/37671342/how-to-load-image-files-with-webpack-file-loader
+
+
