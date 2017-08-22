@@ -112,3 +112,15 @@ There are a lot of different options available when it comes to source maps, be 
 ## Using Watch Mode
 You can instruct webpack to "watch" all files within your dependency graph for changes. If one of these files is updated, the code will be recompiled so you don't have to run the full build manually.
 
+## Webpack Dev Server
+The `webpack-dev-server` provides you with a simple web server and the ability to use live reloading. 
+
+Now we can run npm start from the command line and we will see our browser automatically loading up our page. If you now change any of the source files and save them, the web server will automatically reload after the code has been compiled. 
+
+The webpack-dev-server comes with many configurable options.
+
+Now that your server is working, you might want to give Hot Module Replacement a try!
+
+## Using webpack-dev-middleware
+`webpack-dev-middleware` is a wrapper that will emit files processed by webpack to a server. This is used in `webpack-dev-server` internally, however it's available as a separate package to allow more custom setups if desired. We'll take a look at an example that combines webpack-dev-middleware with an express server.
+
