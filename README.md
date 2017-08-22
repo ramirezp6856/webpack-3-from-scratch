@@ -74,3 +74,8 @@ nother useful asset that can be loaded is data, like JSON files, CSVs, TSVs, and
 When you open index.html and look at your console in your developer tools, you should be able to see your imported data being logged to the console!
 
 This can be especially helpful when implementing some sort of data visualization using a tool like d3. Instead of making an ajax request and parsing the data at runtime you can load it into your module during the build process so that the parsed data is ready to go as soon as the module hits the browser.
+
+# Branch Asset Management in Webpack 
+The branch Asset Management in Webpack was created right after going through the Webpack documentation for Asset Management. The **Wrapping Up** section recommended to delete some of the configurations in the index.js and the webpack config file. Also, had to delete project files.
+
+
