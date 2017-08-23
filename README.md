@@ -1,3 +1,6 @@
+# Notes on webpack.config.js
+Please see more in examples
+
 # webpack-3-from-scratch
 
 # Getting Started
