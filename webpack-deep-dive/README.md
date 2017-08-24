@@ -18,7 +18,7 @@ Kent Dodds Lynda
 entry/output.filename
 ~~~~
 
-1. Add scripts
+1. Add scripts to `package.json`
 ~~~~
   "scripts": {
      "build:dev": "webpack"
