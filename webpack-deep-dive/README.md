@@ -11,7 +11,10 @@ Kent Dodds Lynda
     "webpack": "2.1.0-beta.20"
 ~~~~
 
-
+To exclude npm errors issue run command with `-s` argument
+~~~~
+npm run build:dev
+~~~~
 
 ### Config Props:
 ~~~~
@@ -23,6 +26,10 @@ entry/output.filename
   "scripts": {
      "build:dev": "webpack"
   }
+~~~~
+    * To exclude npm errors issue run command with `-s` argument
+~~~~
+npm run build:dev
 ~~~~
 2. Add `webpack.config.js`
 3. Update `index.html`
