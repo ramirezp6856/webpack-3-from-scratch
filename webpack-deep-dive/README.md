@@ -7,6 +7,26 @@ Kent Dodds Lynda
 # 1. Getting Started with webpack
 
 ## Initializing webpack
+~~~~
+    "webpack": "2.1.0-beta.20"
+~~~~
+
+
+
+### Config Props:
+~~~~
+entry/output.filename
+~~~~
+
+1. Add scripts
+~~~~
+  "scripts": {
+     "build:dev": "webpack"
+  }
+~~~~
+2. Add `webpack.config.js`
+3. Update `index.html`
+
 
 ## Specifying an entry point
 
