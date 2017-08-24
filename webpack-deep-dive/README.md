@@ -27,7 +27,9 @@ entry/output.filename
      "build:dev": "webpack"
   }
 ~~~~
+
     * To exclude npm errors issue run command with `-s` argument
+
 ~~~~
 npm run build:dev
 ~~~~
