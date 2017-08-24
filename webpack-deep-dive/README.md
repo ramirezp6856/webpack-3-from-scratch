@@ -28,7 +28,7 @@ entry/output.filename
   }
 ~~~~
 
-    * To exclude npm errors issue run command with `-s` argument
+* To exclude npm errors issue run command with `-s` argument
 
 ~~~~
 npm run build:dev
