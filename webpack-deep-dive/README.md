@@ -186,7 +186,7 @@ Instead of this we can run the webpack dev server. Which watches and serves up h
 
 
 ## Path configuration
-Add path key to specify where the bundle will end up.
+Add path key to specify where the bundle will end up. It needs to be an absolute path so we use the function resolve.
 
 `webpack.config.babel.js`
 ~~~~
@@ -206,13 +206,15 @@ module.exports = () => {
 }
 ~~~~
 
+
+
 After editing config file you have to rebuild and then redeploy dev server.
 
 ## Minifying and source maps
 
 ## Development vs. production environments
 
-## Excercise: Adding webpack
+## Exercise: Adding webpack
 
 # 2. Working with webpack
 
