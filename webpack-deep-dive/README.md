@@ -133,11 +133,80 @@ const resolve = require('path').resolve
 ~~~~
 
 #### Arrow function
+~~~~
+const webpackValidator = require('webpack-validator')
+const {resolve} = require('path')
 
+
+module.exports = () => {
+    return webpackValidator({
+        context: resolve('src'),
+        entry: './bootstrap.js',
+        output: {
+            filename: 'bundle.js'
+        }
+    })
+}
+~~~~
+
+is the same as
+
+~~~~
+const webpackValidator = require('webpack-validator')
+const {resolve} = require('path')
+
+
+module.exports = webpackValidator({
+        context: resolve('src'),
+        entry: './bootstrap.js',
+        output: {
+            filename: 'bundle.js'
+        }
+    })
+~~~~
+
+The difference being, in the future were going to
+use an argument that is passed into the arrow function.
+It makes differentiating between prod and dev config easier.
 
 ## webpack dev server
+Argument `watch` watches for changes.
+`npm run build:dev -s -- --watch`
+
+devDependency
+`"webpack-dev-server": "2.1.0-beta.0"`
+
+Added as a script
+`"dev": "webpack-dev-server"`
+
+So
+`npm run dev -sn`
+
+Instead of this we can run the webpack dev server. Which watches and serves up http.
+
 
 ## Path configuration
+Add path key to specify where the bundle will end up.
+
+`webpack.config.babel.js`
+~~~~
+const webpackValidator = require('webpack-validator')
+const {resolve} = require('path')
+
+
+module.exports = () => {
+    return webpackValidator({
+        context: resolve('src'),
+        entry: './bootstrap.js',
+        output: {
+            path: resolve('dist'),
+            filename: 'bundle.js'
+        }
+    })
+}
+~~~~
+
+After editing config file you have to rebuild and then redeploy dev server.
 
 ## Minifying and source maps
 
