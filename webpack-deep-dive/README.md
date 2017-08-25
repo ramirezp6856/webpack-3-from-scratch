@@ -53,6 +53,7 @@ The following will help you create the bundle.js file.
 Webpack ships with a runtime. Webpack turns all your require statements and import statements into a
 webpack require to resolve all the modules at runtime.
 
+`webpack.config.babel.js`
 ~~~~
 const {resolve} = require('path')
 
@@ -76,6 +77,7 @@ Webpack-validator will give you friendly errors. Remember the `-s` argument.
 
 `npm run build:dev -s`
 
+`webpack.config.babel.js`
 ~~~~
 const webpackValidator = require('webpack-validator')
 const {resolve} = require('path')
@@ -94,6 +96,7 @@ module.exports = () => {
 
 OR
 
+`webpack.config.babel.js`
 ~~~~
 const webpackValidator = require('webpack-validator')
 const {resolve} = require('path')
@@ -133,6 +136,7 @@ const resolve = require('path').resolve
 ~~~~
 
 #### Arrow function
+`webpack.config.babel.js`
 ~~~~
 const webpackValidator = require('webpack-validator')
 const {resolve} = require('path')
@@ -151,6 +155,7 @@ module.exports = () => {
 
 is the same as
 
+`webpack.config.babel.js`
 ~~~~
 const webpackValidator = require('webpack-validator')
 const {resolve} = require('path')
@@ -206,13 +211,178 @@ module.exports = () => {
 }
 ~~~~
 
+To know where the bundle will be served you need add a publicPath.
+If you don't specify publicPath it will assume the bundle served from just `/`.
 
+`webpack.config.babel.js`
+~~~~
+const webpackValidator = require('webpack-validator')
+const {resolve} = require('path')
+
+
+module.exports = () => {
+    return webpackValidator({
+        context: resolve('src'),
+        entry: './bootstrap.js',
+        output: {
+            path: resolve('dist'),
+            filename: 'bundle.js',
+            publicPath: '/dist/'
+        }
+    })
+}
+~~~~
 
 After editing config file you have to rebuild and then redeploy dev server.
 
 ## Minifying and source maps
+Add script `"build": "webpack -p",`
+Then `npm run build` will generate an optimized bundle.js in your dist.
+
+**Source Maps** allow us to debug efficiently.
+
+Adding `devtool: 'eval'` gives the browser the opportunity to debug webpack via source maps.
+`eval` is really fast to generate however you don't want to ship that to customers.
+By adding `devtool: 'source-map'`, The only thing that will be shipped to the customer will be our actual code and the url to our code.
+See the difference below.
+
+Then run 'npm run dev'.
+
+`webpack.config.babel.js` for dev
+~~~~
+const webpackValidator = require('webpack-validator')
+const {resolve} = require('path')
+
+
+module.exports = () => {
+    return webpackValidator({
+        context: resolve('src'),
+        entry: './bootstrap.js',
+        output: {
+            path: resolve('dist'),
+            filename: 'bundle.js',
+            publicPath: '/dist/'
+        },
+        devtool: 'eval',
+    })
+}
+~~~~
+
+`webpack.config.babel.js` for prod
+~~~~
+const webpackValidator = require('webpack-validator')
+const {resolve} = require('path')
+
+
+module.exports = () => {
+    return webpackValidator({
+        context: resolve('src'),
+        entry: './bootstrap.js',
+        output: {
+            path: resolve('dist'),
+            filename: 'bundle.js',
+            publicPath: '/dist/'
+        },
+        devtool: 'source-map',
+    })
+}
+~~~~
+
+To access using chrome, inspect then click the Sources tab.
+Under sources collapse localhost to bring `webpack://` into view.
+
+
 
 ## Development vs. production environments
+We want to be able to distinguish between production and development in our configuration when
+we're generating our configuration, and that's why we're using a function in our configuration
+rather than an object, is because we can actually accept a parameter here.
+
+The parameter is called `env`
+
+`webpack.config.babel.js`
+~~~~
+const webpackValidator = require('webpack-validator')
+const {resolve} = require('path')
+
+
+module.exports = env => {
+    return webpackValidator({
+        context: resolve('src'),
+        entry: './bootstrap.js',
+        output: {
+            path: resolve('dist'),
+            filename: 'bundle.js',
+            publicPath: '/dist/'
+        },
+        devtool: 'source-map',
+    })
+}
+~~~~
+
+In our package JSON, we can set, in these scripts
+we can set that env object to have a couple properties.
+See below in the `scripts` section in terms of
+`"dev": "webpack-dev-server --env.dev",` and `"build": "webpack -p --env.prod",.`
+
+`package.json`
+~~~~
+{
+  "private": true,
+  "dependencies": {
+    "todomvc-app-css": "2.0.6"
+  },
+  "devDependencies": {
+    "eslint": "3.2.2",
+    "eslint-config-kentcdodds": "^9.0.0",
+    "ghooks": "1.3.2",
+    "http-server": "0.9.0",
+    "opt-cli": "1.5.1",
+    "webpack": "2.1.0-beta.20",
+    "webpack-validator": "2.2.7",
+    "webpack-dev-server": "2.1.0-beta.0"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "opt --in pre-commit --exec \"npm run validate\""
+    }
+  },
+  "scripts": {
+    "build:dev": "webpack",
+    "dev": "webpack-dev-server --env.dev",
+    "build": "webpack -p --env.prod",
+    "validate": "npm run lint",
+    "start": "http-server --silent -c-1",
+    "lint": "eslint ."
+  }
+}
+
+~~~~
+
+And then, inside of the webpack config file, we can say
+env.prod and it will execute a ternary operator. See below
+in `devtool` of the `module.exports`.
+
+`webpack.config.babel.js`
+~~~~
+const webpackValidator = require('webpack-validator')
+const {resolve} = require('path')
+
+
+module.exports = env => {
+    return webpackValidator({
+        context: resolve('src'),
+        entry: './bootstrap.js',
+        output: {
+            path: resolve('dist'),
+            filename: 'bundle.js',
+            publicPath: '/dist/'
+        },
+        devtool: env.prod ? 'source-map' : 'eval',
+    })
+}
+~~~~
+
 
 ## Exercise: Adding webpack
 
