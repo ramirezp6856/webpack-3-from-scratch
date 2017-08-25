@@ -113,6 +113,28 @@ module.exports = () => {
 }
 ~~~~
 
+#### `{resolve}`
+`{resolve}` is an example of destructuring. Node 6 allows you to do this.
+~~~~
+const {resolve} = require('path')
+~~~~
+
+is the same as
+
+~~~~
+const path = require('path')
+const resolve = path.resolve
+~~~~
+
+and the same as
+
+~~~~
+const resolve = require('path').resolve
+~~~~
+
+#### Arrow function
+
+
 ## webpack dev server
 
 ## Path configuration
