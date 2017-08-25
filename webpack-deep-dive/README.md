@@ -21,25 +21,97 @@ npm run build:dev
 entry/output.filename
 ~~~~
 
-1. Add scripts to `package.json`
+#### Add scripts to `package.json`
 ~~~~
   "scripts": {
      "build:dev": "webpack"
   }
 ~~~~
 
-* To exclude npm errors issue run command with `-s` argument
+**Note** To exclude npm errors issue run command with `-s` argument
 
 ~~~~
-npm run build:dev
+npm run build:dev -s
 ~~~~
-2. Add `webpack.config.js`
-3. Update `index.html`
+#### Add `webpack.config.js`
+~~~~
+touch webpack.config.js
+~~~~
+A fun little trick is to add `.babel` between `.config` and `.js`.
+Then you can transpile with babel.
+
+Now we have to create a module inside of `webpack.config.js`.
 
 
 ## Specifying an entry point
+Entry is like the main method of our app. It's responsible for requiring all the things it needs all its dependencies and
+webpack will resolve dependencies and spit out the resulting bundle or the concatenated resolved file.
+
+Provide webpack with context. All our modules are in the src directory.
+The following will help you create the bundle.js file.
+
+Webpack ships with a runtime. Webpack turns all your require statements and import statements into a
+webpack require to resolve all the modules at runtime.
+
+~~~~
+const {resolve} = require('path')
+
+module.exports = () => {
+    return {
+        context: resolve('src'),
+        entry: './bootstrap.js',
+        output: {
+            filename: 'bundle.js'
+        }
+    }
+}
+~~~~
+
+#### Update `index.html`
+Now that we have the bundling we can change reference from bootstrap.js to bundle.js.
 
 ## webpack-validator
+Pass your webpack configure object to the webpack-validator function.
+Webpack-validator will give you friendly errors. Remember the `-s` argument.
+
+`npm run build:dev -s`
+
+~~~~
+const webpackValidator = require('webpack-validator')
+const {resolve} = require('path')
+
+
+module.exports = () => {
+    return webpackValidator({
+        context: resolve('src'),
+        entry: './bootstrap.js',
+        output: {
+            filename: 'bundle.js'
+        }
+    })
+}
+~~~~
+
+OR
+
+~~~~
+const webpackValidator = require('webpack-validator')
+const {resolve} = require('path')
+
+
+module.exports = () => {
+    {
+        const config = {
+            context: resolve('src'),
+            entry: './bootstrap.js',
+            output: {
+                filename: 'bundle.js'
+        }
+    }
+
+    return webpackValidator(config)
+}
+~~~~
 
 ## webpack dev server
 
