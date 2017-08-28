@@ -392,6 +392,8 @@ Restart and checkout the following branch
 
 Some of the things that changed include webpack config's 'devTool' now uses a function as opposed to the itinerary statement.
 Also, `package.json` was updated to include `prebuild` and `prebuild:dev` both utilize the package `rimraf`.
+when npm scripts, when you say npm run build, one of the first things it does is it checks for other scripts that have life cycle hooks, and one of those life cycle hooks is pre.
+And so if it finds something that is pre, and then whatever the name of the script you're running, then it's going to run the script first.
 
 `webpack.config.babel.js`
 ~~~~
