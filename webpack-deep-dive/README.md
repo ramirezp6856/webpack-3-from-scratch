@@ -386,6 +386,34 @@ module.exports = env => {
 
 ## Exercise: Adding webpack
 
+Restart and checkout the following branch
+
+`git checkout -f FEM/01.0-add-webpack`
+
+Some of the things that changed include webpack config's 'devTool' now uses a function as opposed to the itinerary statement.
+Also, `package.json` was updated to include `prebuild` and `prebuild:dev` both utilize the package `rimraf`.
+
+`webpack.config.babel.js`
+~~~~
+const webpackValidator = require('webpack-validator')
+const {resolve} = require('path')
+const {getIfUtils} = require('webpack-config-utils')
+
+
+module.exports = env => {
+    return webpackValidator({
+        context: resolve('src'),
+        entry: './bootstrap.js',
+        output: {
+            path: resolve('dist'),
+            filename: 'bundle.js',
+            publicPath: '/dist/'
+        },
+        devtool: ifProd('source-map' : 'eval'),
+    })
+}
+~~~~
+
 # 2. Working with webpack
 
 ## Debugging webpack
